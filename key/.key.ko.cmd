@@ -1,0 +1,1 @@
+cmd_/home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/key/key.ko := arm-linux-gnueabihf-ld -EL -r  -T ./scripts/module-common.lds --build-id  -o /home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/key/key.ko /home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/key/key.o /home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/key/key.mod.o

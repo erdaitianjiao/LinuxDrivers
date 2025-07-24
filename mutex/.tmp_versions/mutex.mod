@@ -1,0 +1,2 @@
+/home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/mutex/mutex.ko
+/home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/mutex/mutex.o

@@ -1,0 +1,19 @@
+{
+    "files.associations": {
+        "*.S": "platformio-debug.asm",
+        "module.h": "c",
+        "kernel.h": "c",
+        "types.h": "c",
+        "gpio.h": "c",
+        "errno.h": "c",
+        "const.h": "c",
+        "ide.h": "c",
+        "init.h": "c",
+        "of.h": "c",
+        "io.h": "c",
+        "uaccess.h": "c",
+        "thread_info.h": "c",
+        "cdev.h": "c",
+        "delay.h": "c"
+    }
+}

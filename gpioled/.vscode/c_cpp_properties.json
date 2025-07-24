@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/home/tianjiao/workspace/linux/IMX6ULL/linux/origin_linux/tianjiaoorlinux/include/", 
+                "/home/tianjiao/workspace/linux/IMX6ULL/linux/origin_linux/tianjiaoorlinux/arch/arm/include/", 
+                "/home/tianjiao/workspace/linux/IMX6ULL/linux/origin_linux/tianjiaoorlinux/arch/arm/include/generated/",
+                "/home/tianjiao/workspace/linux/IMX6ULL/linux/origin_linux/tianjiaoorlinux/",
+                "/home/tianjiao/workspace/linux/IMX6ULL/linux/origin_linux/tianjiaoorlinux/arch/arm/include/"
+                
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "clang-x64"
+        }
+    ],
+    "version": 4
+}

@@ -1,0 +1,1 @@
+cmd_/home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/gpioled/gpioled.ko := arm-linux-gnueabihf-ld -EL -r  -T ./scripts/module-common.lds --build-id  -o /home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/gpioled/gpioled.ko /home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/gpioled/gpioled.o /home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/gpioled/gpioled.mod.o
