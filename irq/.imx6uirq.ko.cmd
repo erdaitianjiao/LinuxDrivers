@@ -1,0 +1,1 @@
+cmd_/home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/irq/imx6uirq.ko := arm-linux-gnueabihf-ld -EL -r  -T ./scripts/module-common.lds --build-id  -o /home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/irq/imx6uirq.ko /home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/irq/imx6uirq.o /home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/irq/imx6uirq.mod.o

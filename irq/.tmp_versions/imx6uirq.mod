@@ -1,0 +1,2 @@
+/home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/irq/imx6uirq.ko
+/home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/irq/imx6uirq.o
