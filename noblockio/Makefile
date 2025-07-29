@@ -1,7 +1,7 @@
 KERNELDIR := /home/tianjiao/workspace/linux/IMX6ULL/linux/origin_linux/tianjiaoorlinux/
 CURRENT_PATH := $(shell pwd)
 
-obj-m := chrdevbase.o
+obj-m := noblockio.o
 
 build: kernel_modules
 

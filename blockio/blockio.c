@@ -20,7 +20,7 @@
 #include <asm/io.h>
 
 #define IMX6UIRQ_CNT    1
-#define IMX6UIRQ_NAME   "imx6uirq"
+#define IMX6UIRQ_NAME   "blockio"
 #define KEY0VALUE       0X01
 #define INVAKEY         0XFF
 #define KEY_NUM         1
@@ -49,8 +49,9 @@ struct imx6uirq_dev {
     atomic_t keyvalue;                          // 有效按键键值
     atomic_t releasekey;                        // 标记是否完成一次完整的按键
     struct timer_list timer;                    // 定义一个定时器
-    struct irq_keydesc irqkeydesc[KEY_NUM];    // 按键描述数组
+    struct irq_keydesc irqkeydesc[KEY_NUM];     // 按键描述数组
     unsigned char curkeynum;                    // 当前的按键号
+    wait_queue_head_t r_wait;                   // 读等待队列头
 
 };
 
@@ -89,6 +90,12 @@ void timer_function(unsigned long arg) {
 
         atomic_set(&dev->keyvalue, 0x80 | keydesc->value);
         atomic_set(&dev->releasekey, 1);
+
+    }
+    // 唤醒进程
+    if (atomic_read(&dev->releasekey)) {
+
+        wake_up_interruptible(&dev->r_wait);
 
     }
 
@@ -157,6 +164,8 @@ static int keyio_init(void) {
     // 创建定时器
     init_timer(&imx6uirq.timer);
     imx6uirq.timer.function = timer_function;
+    
+    init_waitqueue_head(&imx6uirq.r_wait);
     return 0; 
     
 }
@@ -175,6 +184,31 @@ static ssize_t imx6uirq_read(struct file *filp, char __user *buf, size_t cnt, lo
     unsigned char releasekey = 0;
     struct imx6uirq_dev *dev = (struct imx6uirq_dev *)filp->private_data;
     
+#if 0
+    ret = wait_event_interruptible(dev->r_wait, atomic_read(&dev->releasekey));
+    if (ret) {
+
+        goto wait_error;
+
+    }
+#endif
+    DECLARE_WAITQUEUE(wait, current);
+    if (atomic_read(&dev->releasekey) == 0) {
+
+        add_wait_queue(&dev->r_wait, &wait);
+        __set_current_state(TASK_INTERRUPTIBLE);
+        schedule();
+        if (signal_pending(current)) {
+
+            ret = -ERESTARTSYS;
+            goto wait_error;
+
+        }
+        __set_current_state(TASK_RUNNING);
+        remove_wait_queue(&dev->r_wait, &wait);
+
+    }
+
     keyvalue = atomic_read(&dev->keyvalue);
     releasekey = atomic_read(&dev->releasekey);
 
@@ -198,6 +232,11 @@ static ssize_t imx6uirq_read(struct file *filp, char __user *buf, size_t cnt, lo
 
     }
     return 0;
+
+wait_error:
+    set_current_state(TASK_RUNNING);
+    remove_wait_queue(&dev->r_wait, &wait);
+    return ret;
 
 data_error:
     return -EINVAL;

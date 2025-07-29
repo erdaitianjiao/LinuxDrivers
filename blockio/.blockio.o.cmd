@@ -1,8 +1,8 @@
-cmd_/home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/zhegndiantest/chrdevbase.o := arm-linux-gnueabihf-gcc -Wp,-MD,/home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/zhegndiantest/.chrdevbase.o.d -nostdinc -isystem /usr/local/arm/gcc-linaro-4.9.4-2017.01-x86_64_arm-linux-gnueabihf/bin/../lib/gcc/arm-linux-gnueabihf/4.9.4/include -I./arch/arm/include -Iarch/arm/include/generated/uapi -Iarch/arm/include/generated  -Iinclude -I./arch/arm/include/uapi -Iarch/arm/include/generated/uapi -I./include/uapi -Iinclude/generated/uapi -include ./include/linux/kconfig.h -D__KERNEL__ -mlittle-endian -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -std=gnu89 -fno-dwarf2-cfi-asm -fno-ipa-sra -mabi=aapcs-linux -mno-thumb-interwork -mfpu=vfp -funwind-tables -marm -D__LINUX_ARM_ARCH__=7 -march=armv7-a -msoft-float -Uarm -fno-delete-null-pointer-checks -O2 --param=allow-store-data-races=0 -Wframe-larger-than=1024 -fno-stack-protector -Wno-unused-but-set-variable -fomit-frame-pointer -fno-var-tracking-assignments -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -Werror=implicit-int -Werror=strict-prototypes -Werror=date-time -DCC_HAVE_ASM_GOTO  -DMODULE  -D"KBUILD_STR(s)=#s" -D"KBUILD_BASENAME=KBUILD_STR(chrdevbase)"  -D"KBUILD_MODNAME=KBUILD_STR(chrdevbase)" -c -o /home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/zhegndiantest/.tmp_chrdevbase.o /home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/zhegndiantest/chrdevbase.c
+cmd_/home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/blockio/blockio.o := arm-linux-gnueabihf-gcc -Wp,-MD,/home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/blockio/.blockio.o.d -nostdinc -isystem /usr/local/arm/gcc-linaro-4.9.4-2017.01-x86_64_arm-linux-gnueabihf/bin/../lib/gcc/arm-linux-gnueabihf/4.9.4/include -I./arch/arm/include -Iarch/arm/include/generated/uapi -Iarch/arm/include/generated  -Iinclude -I./arch/arm/include/uapi -Iarch/arm/include/generated/uapi -I./include/uapi -Iinclude/generated/uapi -include ./include/linux/kconfig.h -D__KERNEL__ -mlittle-endian -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -std=gnu89 -fno-dwarf2-cfi-asm -fno-ipa-sra -mabi=aapcs-linux -mno-thumb-interwork -mfpu=vfp -funwind-tables -marm -D__LINUX_ARM_ARCH__=7 -march=armv7-a -msoft-float -Uarm -fno-delete-null-pointer-checks -O2 --param=allow-store-data-races=0 -Wframe-larger-than=1024 -fno-stack-protector -Wno-unused-but-set-variable -fomit-frame-pointer -fno-var-tracking-assignments -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -Werror=implicit-int -Werror=strict-prototypes -Werror=date-time -DCC_HAVE_ASM_GOTO  -DMODULE  -D"KBUILD_STR(s)=#s" -D"KBUILD_BASENAME=KBUILD_STR(blockio)"  -D"KBUILD_MODNAME=KBUILD_STR(blockio)" -c -o /home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/blockio/.tmp_blockio.o /home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/blockio/blockio.c
 
-source_/home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/zhegndiantest/chrdevbase.o := /home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/zhegndiantest/chrdevbase.c
+source_/home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/blockio/blockio.o := /home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/blockio/blockio.c
 
-deps_/home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/zhegndiantest/chrdevbase.o := \
+deps_/home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/blockio/blockio.o := \
   include/linux/types.h \
     $(wildcard include/config/uid16.h) \
     $(wildcard include/config/lbdaf.h) \
@@ -864,7 +864,61 @@ deps_/home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/zhegndiantest/chrdevba
     $(wildcard include/config/have/mod/arch/specific.h) \
     $(wildcard include/config/modules/use/elf/rel.h) \
     $(wildcard include/config/modules/use/elf/rela.h) \
+  include/linux/gpio.h \
+    $(wildcard include/config/gpiolib.h) \
+    $(wildcard include/config/arch/have/custom/gpio/h.h) \
+  arch/arm/include/asm/gpio.h \
+    $(wildcard include/config/arch/nr/gpio.h) \
+  include/asm-generic/gpio.h \
+  include/linux/of.h \
+    $(wildcard include/config/sparc.h) \
+    $(wildcard include/config/of/dynamic.h) \
+    $(wildcard include/config/attach/node.h) \
+    $(wildcard include/config/detach/node.h) \
+    $(wildcard include/config/add/property.h) \
+    $(wildcard include/config/remove/property.h) \
+    $(wildcard include/config/update/property.h) \
+    $(wildcard include/config/no/change.h) \
+    $(wildcard include/config/change/add.h) \
+    $(wildcard include/config/change/remove.h) \
+    $(wildcard include/config/of/resolve.h) \
+    $(wildcard include/config/of/overlay.h) \
+  include/linux/property.h \
+  include/linux/fwnode.h \
+  include/linux/gpio/driver.h \
+    $(wildcard include/config/gpiolib/irqchip.h) \
+    $(wildcard include/config/of/gpio.h) \
+  include/linux/irq.h \
+    $(wildcard include/config/irq/domain/hierarchy.h) \
+    $(wildcard include/config/generic/pending/irq.h) \
+    $(wildcard include/config/hardirqs/sw/resend.h) \
+    $(wildcard include/config/generic/irq/legacy/alloc/hwirq.h) \
+    $(wildcard include/config/generic/irq/legacy.h) \
+  include/linux/irqhandler.h \
+  arch/arm/include/generated/asm/irq_regs.h \
+  include/asm-generic/irq_regs.h \
+  include/linux/irqdesc.h \
+    $(wildcard include/config/irq/preflow/fasteoi.h) \
+    $(wildcard include/config/handle/domain/irq.h) \
+  arch/arm/include/asm/hw_irq.h \
+  include/linux/irqchip/chained_irq.h \
+  include/linux/irqdomain.h \
+    $(wildcard include/config/irq/domain.h) \
+  include/linux/pinctrl/pinctrl.h \
+    $(wildcard include/config/generic/pinconf.h) \
+  include/linux/gpio/consumer.h \
+    $(wildcard include/config/gpio/sysfs.h) \
+  include/linux/cdev.h \
+  include/linux/of_address.h \
+    $(wildcard include/config/of/address.h) \
+  include/linux/of_gpio.h \
+  include/linux/of_irq.h \
+    $(wildcard include/config/ppc32.h) \
+    $(wildcard include/config/ppc/pmac.h) \
+    $(wildcard include/config/of/irq.h) \
+  arch/arm/include/asm/mach/map.h \
+    $(wildcard include/config/debug/ll.h) \
 
-/home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/zhegndiantest/chrdevbase.o: $(deps_/home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/zhegndiantest/chrdevbase.o)
+/home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/blockio/blockio.o: $(deps_/home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/blockio/blockio.o)
 
-$(deps_/home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/zhegndiantest/chrdevbase.o):
+$(deps_/home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/blockio/blockio.o):

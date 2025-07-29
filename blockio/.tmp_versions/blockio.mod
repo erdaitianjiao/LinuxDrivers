@@ -1,0 +1,2 @@
+/home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/blockio/blockio.ko
+/home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/blockio/blockio.o

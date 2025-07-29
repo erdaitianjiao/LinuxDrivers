@@ -15,12 +15,14 @@
 #include <linux/timer.h>
 #include <linux/of_irq.h>
 #include <linux/irq.h>
+#include <linux/wait.h>
+#include <linux/poll.h>
 #include <asm/mach/map.h>
 #include <asm/uaccess.h>
 #include <asm/io.h>
 
 #define IMX6UIRQ_CNT    1
-#define IMX6UIRQ_NAME   "imx6uirq"
+#define IMX6UIRQ_NAME   "noblockio"
 #define KEY0VALUE       0X01
 #define INVAKEY         0XFF
 #define KEY_NUM         1
@@ -49,8 +51,9 @@ struct imx6uirq_dev {
     atomic_t keyvalue;                          // 有效按键键值
     atomic_t releasekey;                        // 标记是否完成一次完整的按键
     struct timer_list timer;                    // 定义一个定时器
-    struct irq_keydesc irqkeydesc[KEY_NUM];    // 按键描述数组
+    struct irq_keydesc irqkeydesc[KEY_NUM];     // 按键描述数组
     unsigned char curkeynum;                    // 当前的按键号
+    wait_queue_head_t r_wait;                   // 读等待队列头
 
 };
 
@@ -91,12 +94,19 @@ void timer_function(unsigned long arg) {
         atomic_set(&dev->releasekey, 1);
 
     }
+    // 唤醒进程
+    if (atomic_read(&dev->releasekey)) {
+
+        wake_up_interruptible(&dev->r_wait);
+
+    }
 
 }
 
 static int keyio_init(void) {
 
     unsigned char i = 0;
+    char name[10];
     int ret = 0;
 
     imx6uirq.nd = of_find_node_by_path("/key");
@@ -120,9 +130,9 @@ static int keyio_init(void) {
     // 初始化key使用的io 并且设置成中断模式
     for (i = 0; i < KEY_NUM; i ++) {
 
-        memset(imx6uirq.irqkeydesc[i].name, 0, sizeof(imx6uirq.irqkeydesc[i].name));
+        memset(imx6uirq.irqkeydesc[i].name, 0, sizeof(name));
         sprintf(imx6uirq.irqkeydesc[i].name, "KEY%d",i);
-        gpio_request(imx6uirq.irqkeydesc[i].gpio, imx6uirq.irqkeydesc[i].name);
+        gpio_request(imx6uirq.irqkeydesc[i].gpio, name);
         gpio_direction_input(imx6uirq.irqkeydesc[i].gpio);
         imx6uirq.irqkeydesc[i].irqnum = irq_of_parse_and_map(imx6uirq.nd, i);
 #if 0
@@ -157,6 +167,8 @@ static int keyio_init(void) {
     // 创建定时器
     init_timer(&imx6uirq.timer);
     imx6uirq.timer.function = timer_function;
+    
+    init_waitqueue_head(&imx6uirq.r_wait);
     return 0; 
     
 }
@@ -175,6 +187,24 @@ static ssize_t imx6uirq_read(struct file *filp, char __user *buf, size_t cnt, lo
     unsigned char releasekey = 0;
     struct imx6uirq_dev *dev = (struct imx6uirq_dev *)filp->private_data;
     
+    if (filp->f_flags & O_NONBLOCK) {
+
+        if (atomic_read(&dev->releasekey) == 0) {
+
+            return -EAGAIN;
+
+        }
+    } else {
+    
+        ret = wait_event_interruptible(dev->r_wait, atomic_read(&dev->releasekey));
+        if (ret) {
+
+            goto wait_error;
+
+        }
+
+    }
+
     keyvalue = atomic_read(&dev->keyvalue);
     releasekey = atomic_read(&dev->releasekey);
 
@@ -199,17 +229,43 @@ static ssize_t imx6uirq_read(struct file *filp, char __user *buf, size_t cnt, lo
     }
     return 0;
 
+wait_error:
+    return ret;
+
 data_error:
     return -EINVAL;
 }
+
+
+// poll函数 用于处理非阻塞访问
+unsigned int imx6uirq_poll(struct file *filp, struct poll_table_struct *wait) { 
+
+    unsigned int mask = 0;
+    struct imx6uirq_dev *dev = (struct imx6uirq_dev *)filp->private_data;
+
+    poll_wait(filp, &dev->r_wait, wait);
+
+    if (atomic_read(&dev->releasekey)) {
+
+        mask = POLLIN | POLLRDNORM; 
+
+    }
+    return mask;
+
+}
+
+    
+
 
 static struct file_operations imx6uirq_fops = {
 
     .owner = THIS_MODULE,
     .open = imx6uirq_open,
     .read = imx6uirq_read,
+    .poll = imx6uirq_poll,
 
 };
+
 
 static int __init imx6uirq_init(void) {
 

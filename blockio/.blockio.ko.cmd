@@ -1,0 +1,1 @@
+cmd_/home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/blockio/blockio.ko := arm-linux-gnueabihf-ld -EL -r  -T ./scripts/module-common.lds --build-id  -o /home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/blockio/blockio.ko /home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/blockio/blockio.o /home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/blockio/blockio.mod.o

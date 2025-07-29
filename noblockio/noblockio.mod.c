@@ -25,6 +25,7 @@ __attribute__((section("__versions"))) = {
 	{ 0xfe990052, __VMLINUX_SYMBOL_STR(gpio_free) },
 	{ 0xf20dabd8, __VMLINUX_SYMBOL_STR(free_irq) },
 	{ 0x6f0036d9, __VMLINUX_SYMBOL_STR(del_timer_sync) },
+	{ 0x275ef902, __VMLINUX_SYMBOL_STR(__init_waitqueue_head) },
 	{ 0xfa2bcf10, __VMLINUX_SYMBOL_STR(init_timer_key) },
 	{ 0xd6b8e852, __VMLINUX_SYMBOL_STR(request_threaded_irq) },
 	{ 0x69fa1227, __VMLINUX_SYMBOL_STR(irq_of_parse_and_map) },
@@ -45,6 +46,10 @@ __attribute__((section("__versions"))) = {
 	{ 0x7d11c268, __VMLINUX_SYMBOL_STR(jiffies) },
 	{ 0x3bd1b1f6, __VMLINUX_SYMBOL_STR(msecs_to_jiffies) },
 	{ 0x67c2fa54, __VMLINUX_SYMBOL_STR(__copy_to_user) },
+	{ 0x1cfb04fa, __VMLINUX_SYMBOL_STR(finish_wait) },
+	{ 0x344b7739, __VMLINUX_SYMBOL_STR(prepare_to_wait_event) },
+	{ 0x1000e51, __VMLINUX_SYMBOL_STR(schedule) },
+	{ 0xd85cd67e, __VMLINUX_SYMBOL_STR(__wake_up) },
 	{ 0x83f62a58, __VMLINUX_SYMBOL_STR(gpiod_get_raw_value) },
 	{ 0x3089e8ae, __VMLINUX_SYMBOL_STR(gpio_to_desc) },
 	{ 0xefd6cf06, __VMLINUX_SYMBOL_STR(__aeabi_unwind_cpp_pr0) },
@@ -56,4 +61,4 @@ __attribute__((section(".modinfo"))) =
 "depends=";
 
 
-MODULE_INFO(srcversion, "763A759C3AB9DF571DCE4BD");
+MODULE_INFO(srcversion, "E02EC22CD7BEEE1116BF357");
