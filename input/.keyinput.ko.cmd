@@ -1,0 +1,1 @@
+cmd_/home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/input/keyinput.ko := arm-linux-gnueabihf-ld -EL -r  -T ./scripts/module-common.lds --build-id  -o /home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/input/keyinput.ko /home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/input/keyinput.o /home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/input/keyinput.mod.o
