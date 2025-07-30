@@ -1,0 +1,1 @@
+cmd_/home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/iic/ap3216c.ko := arm-linux-gnueabihf-ld -EL -r  -T ./scripts/module-common.lds --build-id  -o /home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/iic/ap3216c.ko /home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/iic/ap3216c.o /home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/iic/ap3216c.mod.o

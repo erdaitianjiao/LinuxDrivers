@@ -1,7 +1,7 @@
 KERNELDIR := /home/tianjiao/workspace/linux/IMX6ULL/linux/origin_linux/tianjiaoorlinux/
 CURRENT_PATH := $(shell pwd)
 
-obj-m := template.o
+obj-m := test.o
 
 build: kernel_modules
 
