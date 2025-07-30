@@ -1,2 +1,0 @@
-/home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/multitouch/ft5x06.ko
-/home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/multitouch/ft5x06.o

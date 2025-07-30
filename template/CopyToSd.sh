@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # 目标目录
-TARGET_DIR="/media/tianjiao/d90c8399-2f8b-4e97-8e3f-c2034a79d329/lib/modules/4.1.15/"
+TARGET_DIR="/media/tianjiao/d90c8399-2f8b-4e97-8e3f-c2034a79d329/lib/modules/4.1.15"
 
 # 复制连个文件
 if [ $# -ne 2 ]; then

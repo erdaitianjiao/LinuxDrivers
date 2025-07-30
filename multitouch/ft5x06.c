@@ -307,16 +307,20 @@ static int ft5x06_ts_remove(struct i2c_client *client)
 
 // 传统驱动匹配表
 static const struct i2c_device_id ft5x06_ts_id[] = {
+
 	{ "edt-ft5206", 0, },
 	{ "edt-ft5426", 0, },
 	{}
+	
 };
 
 // 设备树匹配表 
 static const struct of_device_id ft5x06_of_match[] = {
+
 	{ .compatible = "edt,edt-ft5206", },
 	{ .compatible = "edt,edt-ft5426", },
 	{}
+
 };
 
 // i2c驱动结构体 	
