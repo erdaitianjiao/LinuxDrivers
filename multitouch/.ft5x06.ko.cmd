@@ -1,0 +1,1 @@
+cmd_/home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/multitouch/ft5x06.ko := arm-linux-gnueabihf-ld -EL -r  -T ./scripts/module-common.lds --build-id  -o /home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/multitouch/ft5x06.ko /home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/multitouch/ft5x06.o /home/tianjiao/workspace/linux/IMX6ULL/linux_drivers/multitouch/ft5x06.mod.o
