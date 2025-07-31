@@ -1,0 +1,1 @@
+./configure --host=arm-linux-gnueabihf --prefix=/home/tianjiao/workspace/linux/IMX6ULL/tool/alsa-utils --with-alsa-inc-prefix=/home/tianjiao/workspace/linux/IMX6ULL/tool/alsa-lib/include/ --with-alsa-prefix=/home/tianjiao/workspace/linux/IMX6ULL/tool/alsa-lib/lib/ --disable-alsamixer --disable-xmlto
